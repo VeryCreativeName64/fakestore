@@ -11,7 +11,7 @@ let TERMEK = [];
 
 ADMINTERMEKGOMB.addEventListener("click", function () {
   SZULOELEM.innerHTML = "Admin TERMÉK oldal";
-  getAdat("https://fakestoreapi.com/users", adminTermekMegjelenit);
+  getAdat("https://fakestoreapi.com/products", adminTermekMegjelenit);
 });
 
 /*ADMINUSERGOMB.addEventListener("click", function () {
@@ -29,24 +29,23 @@ PUBLICKOSARGOMB.addEventListener("click", function () {
 /*console.log("A lista értéke a fetch előtt: ");
 console.log(TERMEK);*/
 
-function getAdat(vegpont) {
+function getAdat(vegpont, callback) {
   fetch(vegpont)
     .then((response) => response.json())
     .then((data) => {
       TERMEK = data;
       console.log("Megérkezett adatok");
       console.log(TERMEK);
-        callback(TERMEK)
-    })
-    .catch((error) => console.log(error));
+      callback(TERMEK);
+    });
 }
 
 /*console.log("A lista értéke a fetch UTÁN: ");
 console.log(TERMEK);*/
 
-function adminTermekMegjelenit(lista){
-    new AdminTermekTablazat(SZULOELEM, lista);
+function adminTermekMegjelenit(lista) {
+  new AdminTermekTablazat(SZULOELEM, lista);
 }
-function adminTermekMegjelenit(lista){
-    new console.log("admin user", lista);
+function adminTermekMegjelenitUser(lista) {
+  new console.log("admin user", lista);
 }
